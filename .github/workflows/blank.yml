@@ -32,22 +32,11 @@ jobs:
     - name: Build & Generate
       run: cd kompor; cabal run -- kompor build
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: "./kompor/docs"
-
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - name: Deploy
+      uses: fireaz/push-git-subdirectory-as-branch@develop
+      env:
+        REPO: git@codeberg.org:aerphanas/pages.git
+        BRANCH: main
+        FOLDER: kompor/docs
+        SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+        KNOWN_HOSTS_FILE: resources/known_hosts
