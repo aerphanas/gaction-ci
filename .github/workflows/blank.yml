@@ -33,7 +33,7 @@ jobs:
       run: cd kompor; cabal run -- kompor build
 
     - name: Deploy
-      uses: fireaz/push-git-subdirectory-as-branch@develop
+      uses: fireaz/push-git-subdirectory-as-branch@v1.0.1
       env:
         REPO: git@codeberg.org:aerphanas/pages.git
         BRANCH: main
