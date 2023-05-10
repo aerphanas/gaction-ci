@@ -31,7 +31,7 @@ jobs:
       run: cd kompor; cabal run -- kompor build
       
     - name: set known host
-      run: ssh-keyscan github.com > known_hosts
+      run: ssh-keyscan codeberg.org > known_hosts
 
     - name: Deploy
       uses: fireaz/push-git-subdirectory-as-branch@v1.0.1
