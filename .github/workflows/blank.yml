@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: git clone git@codeberg.org:aerphanas/test-gci.git
+    - run: git clone https://codeberg.org/aerphanas/test-gci.git
     - name: Setup Pages
       uses: actions/configure-pages@v2
 
